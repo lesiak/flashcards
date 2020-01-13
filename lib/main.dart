@@ -1,3 +1,4 @@
+import 'package:flashcards/service/deck_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -59,14 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _loadWords() async {
-    var url = 'https://raw.githubusercontent.com/lesiak/DartFlashCards/master/flashcardsnew/web/wordfiles/Level1/01_NatureBeginner.json';
-    var response = await http.get(url);
-    if (response.statusCode == 200) {
-      var body = response.body;
-      print(body);
-    } else {
-      print('Request failed with status: ${response.statusCode}.');
-    }
+    var cards = await DeckLoader.loadWords();
+    print(cards);
   }
 
   @override

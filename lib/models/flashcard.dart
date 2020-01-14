@@ -1,4 +1,4 @@
-class Card {
+class FlashCard {
   String en;
   String es;
   String fi;
@@ -11,11 +11,11 @@ class Card {
   String ru;
   String ko;
 
-  factory Card.empty() {
-    return new Card("", "", "", "", "", "", "", "", "", "", "");
+  factory FlashCard.empty() {
+    return new FlashCard("", "", "", "", "", "", "", "", "", "", "");
   }
 
-  Card(this.en, this.es, this.fi, this.fr, this.it, this.de, this.dk, this.hu, this.cs, this.ru, this.ko);
+  FlashCard(this.en, this.es, this.fi, this.fr, this.it, this.de, this.dk, this.hu, this.cs, this.ru, this.ko);
 
   String getValueForLang(String lang) {
     switch (lang) {
@@ -36,7 +36,7 @@ class Card {
 
   @override
   String toString() {
-    return 'Card{en: $en, es: $es, fi: $fi, fr: $fr, it: $it, de: $de, dk: $dk, hu: $hu, cs: $cs, ru: $ru, ko: $ko}';
+    return 'FlashCard{en: $en, es: $es, fi: $fi, fr: $fr, it: $it, de: $de, dk: $dk, hu: $hu, cs: $cs, ru: $ru, ko: $ko}';
   }
 
 

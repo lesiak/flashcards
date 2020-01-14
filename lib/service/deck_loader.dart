@@ -1,12 +1,12 @@
 import 'dart:convert' as convert;
 
-import 'package:flashcards/model/card.dart';
+import 'package:flashcards/models/flashcard.dart';
 import 'package:http/http.dart' as http;
 
 
 class DeckLoader {
 
-  static Future<List<Card>> loadWords() async {
+  static Future<List<FlashCard>> loadWords() async {
     var url = 'https://raw.githubusercontent.com/lesiak/DartFlashCards/master/flashcardsnew/web/wordfiles/Level1/01_NatureBeginner.json';
     var response = await http.get(url);
     if (response.statusCode == 200) {
@@ -21,14 +21,14 @@ class DeckLoader {
 //    return allCardsFut;
 //  }
 
-  static List<Card> _buildDeckFromJson(String wordListJSON) {
+  static List<FlashCard> _buildDeckFromJson(String wordListJSON) {
     List rawData = convert.jsonDecode(wordListJSON); // parse response text
-    List<Card> allCards = rawData.map(_entryToCard).toList();
+    List<FlashCard> allCards = rawData.map(_entryToCard).toList();
     return allCards;
   }
 
-  static Card _entryToCard(var entry) {
-    return new Card(
+  static FlashCard _entryToCard(var entry) {
+    return new FlashCard(
         entry["en"],
         entry["es"],
         entry["fi"],

@@ -1,5 +1,5 @@
 import 'dart:collection';
-import 'dart:convert' as convert;
+import 'package:yaml/yaml.dart';
 
 import 'package:flashcards/models/flashcard.dart';
 import 'package:http/http.dart' as http;
@@ -9,10 +9,10 @@ class DeckLoader {
 
   static Future<List<FlashCard>> loadWords() async {
     var repoBase = 'https://raw.githubusercontent.com/lesiak/flashcards-data/master';
-    var url = '$repoBase/ru/01_NatureBeginner.json';
+    var url = '$repoBase/ru/01_NatureBeginner.yaml';
     var response = await http.get(url);
     if (response.statusCode == 200) {
-      return _buildDeckFromJson(response.body);
+      return _buildDeckFromYaml(response.body);
     } else {
       print('Request failed with status: ${response.statusCode}.');
     }
@@ -23,8 +23,8 @@ class DeckLoader {
 //    return allCardsFut;
 //  }
 
-  static List<FlashCard> _buildDeckFromJson(String wordListJSON) {
-    List rawData = convert.jsonDecode(wordListJSON); // parse response text
+  static List<FlashCard> _buildDeckFromYaml(String wordListYaml) {
+    List rawData = loadYaml(wordListYaml); // parse response text
     List<FlashCard> allCards = rawData.map(_entryToCard).toList();
     return allCards;
   }

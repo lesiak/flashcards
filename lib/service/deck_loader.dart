@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:io';
 import 'package:yaml/yaml.dart';
 
 import 'package:flashcards/models/flashcard.dart';
@@ -14,7 +15,7 @@ class DeckLoader {
     if (response.statusCode == 200) {
       return _buildDeckFromYaml(response.body);
     } else {
-      print('Request failed with status: ${response.statusCode}.');
+      throw HttpException('Request failed with status: ${response.statusCode}.');
     }
   }
 

@@ -44,8 +44,11 @@ class WordList extends StatelessWidget {
       children: [card.en, card.ru, card.ko].map((name) {
         return Container(
           alignment: Alignment.center,
-          child: Text(name != null ? name : "",
-              style: TextStyle(fontSize: 20.0)),
+          child: Text(name != null ? name : '',
+              style: TextStyle(
+                fontSize: 20.0,
+                fontFamily: 'Roboto',
+              )),
           padding: EdgeInsets.all(8.0),
         );
       }).toList(),

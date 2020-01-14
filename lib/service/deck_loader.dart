@@ -33,7 +33,9 @@ class DeckLoader {
     return new FlashCard(
         entry["word"],
         entry["answer"],
-        LinkedHashMap<String,String>.from(entry["declensionSingular"]),
+        entry["declensionSingular"] != null ?
+          LinkedHashMap<String,String>.from(entry["declensionSingular"]):
+          null,
         entry["declensionPlural"]);
   }
 

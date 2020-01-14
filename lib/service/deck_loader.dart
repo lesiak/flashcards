@@ -7,7 +7,8 @@ import 'package:http/http.dart' as http;
 class DeckLoader {
 
   static Future<List<FlashCard>> loadWords() async {
-    var url = 'https://raw.githubusercontent.com/lesiak/DartFlashCards/master/flashcardsnew/web/wordfiles/Level1/01_NatureBeginner.json';
+    var repoBase = 'https://raw.githubusercontent.com/lesiak/flashcards-data/master';
+    var url = '$repoBase/ru/01_NatureBeginner.json';
     var response = await http.get(url);
     if (response.statusCode == 200) {
       return _buildDeckFromJson(response.body);
@@ -29,17 +30,8 @@ class DeckLoader {
 
   static FlashCard _entryToCard(var entry) {
     return new FlashCard(
-        entry["en"],
-        entry["es"],
-        entry["fi"],
-        entry["fr"],
-        entry["it"],
-        entry["de"],
-        entry["dk"],
-        entry["hu"],
-        entry["cs"],
-        entry["ru"],
-        entry["ko"]);
+        entry["word"],
+        entry["answer"]);
   }
 
 }

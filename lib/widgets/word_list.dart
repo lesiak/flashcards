@@ -43,7 +43,7 @@ class WordList extends StatelessWidget {
 
   TableRow _buildTableRow(FlashCard card) {
     return TableRow(
-      children: [card.en, card.ru, card.ko].map((name) {
+      children: [card.word, card.answer].map((name) {
         return Container(
           alignment: Alignment.center,
           child: Text(name != null ? name : '',
@@ -59,7 +59,7 @@ class WordList extends StatelessWidget {
 
   Widget buildCard(FlashCard card) {
     return Container(
-      child: Column(children: [Text(card.en)]),
+      child: Column(children: [Text(card.word)]),
       margin: EdgeInsets.all(5.0),
       padding: EdgeInsets.all(5.0),
       decoration: BoxDecoration(border: Border.all(color: Colors.grey)),

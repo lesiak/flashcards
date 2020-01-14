@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:convert' as convert;
 
 import 'package:flashcards/models/flashcard.dart';
@@ -31,7 +32,9 @@ class DeckLoader {
   static FlashCard _entryToCard(var entry) {
     return new FlashCard(
         entry["word"],
-        entry["answer"]);
+        entry["answer"],
+        LinkedHashMap<String,String>.from(entry["declensionSingular"]),
+        entry["declensionPlural"]);
   }
 
 }

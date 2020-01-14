@@ -9,21 +9,23 @@ class WordList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var count = 1;
-    return Table(
-      //defaultColumnWidth: FixedColumnWidth(150.0),
-      border: TableBorder(
-        horizontalInside: BorderSide(
-          color: Colors.grey,
-          style: BorderStyle.solid,
-          width: 0.4,
+    return SingleChildScrollView(
+      child: Table(
+        //defaultColumnWidth: FixedColumnWidth(150.0),
+        border: TableBorder(
+          horizontalInside: BorderSide(
+            color: Colors.grey,
+            style: BorderStyle.solid,
+            width: 0.4,
+          ),
+          verticalInside: BorderSide(
+            color: Colors.grey,
+            style: BorderStyle.solid,
+            width: 0.4,
+          ),
         ),
-        verticalInside: BorderSide(
-          color: Colors.grey,
-          style: BorderStyle.solid,
-          width: 0.4,
-        ),
+        children: this.cards.map((c) => _buildTableRow(c)).toList(),
       ),
-      children: this.cards.map((c) => _buildTableRow(c)).toList(),
     );
   }
 

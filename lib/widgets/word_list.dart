@@ -8,21 +8,23 @@ class WordList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-        separatorBuilder: (context, index) => Divider(
-              color: Colors.black,
-              height: 1,
-              thickness: 0.4,
-            ),
-        itemCount: cards.length,
-        itemBuilder: (BuildContext context, int index) {
-          return buildCard(cards[index], index);
-        });
+    return Expanded(
+      child: ListView.separated(
+          separatorBuilder: (context, index) => Divider(
+                color: Colors.black,
+                height: 1,
+                thickness: 0.4,
+              ),
+          itemCount: cards.length,
+          itemBuilder: (BuildContext context, int index) {
+            return buildCard(cards[index], index);
+          }),
+    );
   }
 
   Widget buildCard(FlashCard card, int index) {
     return Container(
-      color: index %2 == 0 ? Colors.lightBlue[50] : Colors.white,
+      color: index % 2 == 0 ? Colors.lightBlue[50] : Colors.white,
       child: Column(
         children: [
           Text(

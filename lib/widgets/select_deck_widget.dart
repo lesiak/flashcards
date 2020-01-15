@@ -9,7 +9,6 @@ class SelectDeckWidget extends StatefulWidget {
 }
 
 class SelectDeckWidgetState extends State<SelectDeckWidget> {
-
   int counter = 0;
   List<FlashCard> flashcards = [];
 
@@ -17,15 +16,34 @@ class SelectDeckWidgetState extends State<SelectDeckWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("Flash Cards")),
-        body: WordList(flashcards),
-        floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add),
-            onPressed: fetchDeck
-        )
-    );
+        body: buildBody(),
+        floatingActionButton:
+            FloatingActionButton(child: Icon(Icons.add), onPressed: fetchDeck));
   }
 
+  Widget buildBody() {
+    return Column(
+      children: <Widget>[
+        WordList(flashcards),
+        Container(
 
+          child: ButtonBar(
+
+            alignment: MainAxisAlignment.center,
+            children: <Widget>[
+              FlatButton(
+                child: Text('Dictionary'),
+              ),
+              FlatButton(
+                child: Text('Dictionary'),
+              )
+            ],
+          ),
+        )
+      ],
+    );
+//
+  }
 
   void fetchDeck() async {
     ++counter;

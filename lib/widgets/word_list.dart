@@ -22,6 +22,7 @@ class WordList extends StatelessWidget {
 
   Widget buildCard(FlashCard card, int index) {
     return Container(
+      color: index %2 == 0 ? Colors.lightBlue[50] : Colors.white,
       child: Column(
         children: [
           Text(

@@ -1,3 +1,4 @@
+import 'package:flashcards/widgets/dictionary_screen.dart';
 import 'package:flashcards/widgets/select_deck_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,13 @@ class App extends StatelessWidget {
           return SelectDeckWidget();
         },
       );
-    } else throw Exception('Unknown route $routeSettings.name');
+    } else if (routeSettings.name == '/dictionary') {
+      return MaterialPageRoute(
+        builder: (BuildContext context) {
+          return DictionaryScreen();
+        },
+      );
+    }
+    else throw Exception('Unknown route ${routeSettings.name}');
   }
 }

@@ -33,6 +33,7 @@ class SelectDeckWidgetState extends State<SelectDeckWidget> {
             children: <Widget>[
               FlatButton(
                 child: Text('Dictionary'),
+                onPressed: () => Navigator.pushNamed(context, '/dictionary'),
               ),
               FlatButton(
                 child: Text('Dictionary'),

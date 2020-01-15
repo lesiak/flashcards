@@ -11,6 +11,8 @@ class WordList extends StatelessWidget {
     return ListView.separated(
         separatorBuilder: (context, index) => Divider(
               color: Colors.black,
+              height: 1,
+              thickness: 0.4,
             ),
         itemCount: cards.length,
         itemBuilder: (BuildContext context, int index) {
@@ -22,11 +24,13 @@ class WordList extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Text(card.word,
-              style: TextStyle(
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w600,
-              )),
+          Text(
+            card.word,
+            style: TextStyle(
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w600,
+            ),
+          ),
           Text(card.answer, style: TextStyle(fontFamily: 'Roboto'))
         ],
         crossAxisAlignment: CrossAxisAlignment.center,

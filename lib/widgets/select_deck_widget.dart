@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flashcards/service/deck_loader.dart';
 import 'package:flutter/material.dart';
 import '../models/flashcard.dart';
@@ -11,6 +12,7 @@ class SelectDeckWidget extends StatefulWidget {
 class SelectDeckWidgetState extends State<SelectDeckWidget> {
   int counter = 0;
   List<FlashCard> flashcards = [];
+  AudioPlayer audioPlayer = AudioPlayer();
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +40,10 @@ class SelectDeckWidgetState extends State<SelectDeckWidget> {
               FlatButton(
                 child: Text('Dictionary'),
                 onPressed: () => Navigator.pushNamed(context, '/dictionary'),
+              ),
+              FlatButton(
+                child: Text('Test Sound'),
+                onPressed: testSound,
               )
             ],
           ),
@@ -58,5 +64,10 @@ class SelectDeckWidgetState extends State<SelectDeckWidget> {
 //    setState(() => images.add(imageModel));
     var cards = await DeckLoader.loadWords();
     setState(() => this.flashcards = cards);
+  }
+
+  void testSound() async {
+    var url = 'https://sample-videos.com/audio/mp3/crowd-cheering.mp3';
+    int result = await audioPlayer.play(url);
   }
 }

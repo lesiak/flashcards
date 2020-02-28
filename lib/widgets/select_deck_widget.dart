@@ -32,11 +32,12 @@ class SelectDeckWidgetState extends State<SelectDeckWidget> {
             alignment: MainAxisAlignment.center,
             children: <Widget>[
               FlatButton(
-                child: Text('Dictionary'),
-                onPressed: () => Navigator.pushNamed(context, '/dictionary'),
+                child: Text('Load Data'),
+                onPressed: fetchDeck,
               ),
               FlatButton(
                 child: Text('Dictionary'),
+                onPressed: () => Navigator.pushNamed(context, '/dictionary'),
               )
             ],
           ),
